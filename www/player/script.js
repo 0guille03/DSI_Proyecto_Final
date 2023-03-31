@@ -9,6 +9,8 @@ button.addEventListener("click", function(e) {
   socket.emit("message_evt", {msg: text});
 });
 
+fetch("player/");
+
 socket.on("message_evt", function(message){
   msg.innerHTML = message.msg;
 });
