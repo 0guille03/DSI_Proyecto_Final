@@ -1,40 +1,30 @@
 const express = require('express');
 const app = express();
-const server = require("http").Server(app);
-var device = require('express-device');
+const path = require('path');
+const server = require('http').Server(app);
+const io = require('socket.io')(server);
 
-const io = require("socket.io")(server);
+app.use('/', express.static(path.join(__dirname, 'www')));
 
-app.use(device.capture());
+let visSocket;
 
-io.on("connection", function(socket){
-  console.log("nuevo cliente");
+io.on('connection', (socket) => {
+  console.log(`socket connected ${socket.id}`);
 
-  socket.on("message_evt", function(message){
-    console.log(socket.id, message);
-    socket.broadcast.emit("message_evt", message);
+  socket.on("VIS_CONNECTED", () => {
+    visSocket = socket;
+  });
+
+  socket.on("ACC_DATA", (data) => {
+    if (visSocket) visSocket.emit("ACC_DATA", data);
+  });
+
+  socket.on("ORIENTATION_DATA", (data) => {
+    if (visSocket) visSocket.emit("ORIENTATION_DATA", data);
   });
   
 });
 
-app.get('/', function(req, res) {
-  console.log(req.device.type.toUpperCase())
-  if (req.device.type.toUpperCase() === "PHONE"){
-    res.render("www/controller/index.html",{
-      my_title: "Controller",
-      items: '',
-      message: ''
-    });
-
-  }
-  else{ 
-    res.render("www/player/index.html",{
-      my_title: "Player",
-      items: '',
-      message: ''
-    });
-  }
-
+server.listen(3000, () => {
+  console.log("Server listening...");
 });
-
-server.listen(3000, () => console.log('server started'));
