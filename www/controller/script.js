@@ -9,7 +9,6 @@ button.addEventListener("click", function(e) {
   socket.emit("message_evt", {msg: text});
 });
 
-fetch("controller/");
 
 socket.on("message_evt", function(message){
   msg.innerHTML = message.msg;

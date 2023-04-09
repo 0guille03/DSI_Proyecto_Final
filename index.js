@@ -15,12 +15,9 @@ io.on('connection', (socket) => {
     visSocket = socket;
   });
 
-  socket.on("ACC_DATA", (data) => {
-    if (visSocket) visSocket.emit("ACC_DATA", data);
-  });
-
-  socket.on("ORIENTATION_DATA", (data) => {
-    if (visSocket) visSocket.emit("ORIENTATION_DATA", data);
+  socket.on("message_evt", function(message){
+    console.log(socket.id, message);
+    socket.broadcast.emit("message_evt", message);
   });
   
 });
@@ -28,3 +25,5 @@ io.on('connection', (socket) => {
 server.listen(3000, () => {
   console.log("Server listening...");
 });
+
+
