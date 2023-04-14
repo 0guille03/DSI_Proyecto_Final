@@ -14,3 +14,6 @@ socket.on("message_evt", function(message){
   msg.innerHTML = message.msg;
 });
 
+function loadPlayer(){
+  socket.broadcast.emit("device_on", {msg: "/www/player/index.html"});
+}

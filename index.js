@@ -22,6 +22,11 @@ io.on('connection', (socket) => {
   
 });
 
+socket.on("device_on", function(html_path){
+  socket.broadcast.emit("change_html", {msg: html_path});
+
+});
+
 server.listen(3000, () => {
   console.log("Server listening...");
 });
