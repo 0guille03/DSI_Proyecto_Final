@@ -15,5 +15,6 @@ socket.on("message_evt", function(message){
 });
 
 function loadPlayer(){
+  console.log("i am at the beggining of load player function");
   socket.broadcast.emit("device_on", {msg: "/player/index.html"});
 }

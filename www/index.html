@@ -1,6 +1,7 @@
 <html>
   <head>
       <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+      <script src="player/script.js"></script>
       <script type="text/javascript"src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
       <link rel="stylesheet" href="style.css">
@@ -22,17 +23,6 @@
         colorDark: "#000000",
         colorLight: "#FFFFFF",
         correctLevel: QRCode.CorrectLevel.H
-      });
-
-      const socket = io();
-      const msg = document.querySelector("#msg");
-
-      socket.on("message_evt", function(message){
-        msg.innerHTML = message.msg;
-      });
-
-      socket.on("change_html", function(path){
-        window.location.href = path;
       });
 
     </script>
