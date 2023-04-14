@@ -19,16 +19,15 @@ io.on('connection', (socket) => {
     console.log(socket.id, message);
     socket.broadcast.emit("message_evt", message);
   });
+
+  socket.on("device_on", function(html_path){
+    socket.broadcast.emit("change_html", {msg: html_path});
+  
+  });
   
 });
 
-socket.on("device_on", function(html_path){
-  socket.broadcast.emit("change_html", {msg: html_path});
-
-});
 
 server.listen(3000, () => {
   console.log("Server listening...");
 });
-
-
