@@ -25,6 +25,26 @@ io.on('connection', (socket) => {
     socket.broadcast.emit("change_html", html_path);
   
   });
+
+  socket.on("volume_up", function(){
+    socket.broadcast.emit("volume_up");
+  });
+  
+  socket.on("volume_down", function(){
+    socket.broadcast.emit("volume_down");
+  });
+  
+  socket.on("go_back", function(){
+    socket.broadcast.emit("go_back");
+  });
+  
+  socket.on("go_forward", function(){
+    socket.broadcast.emit("go_forward");
+  });
+  
+  socket.on("toggle_overlay", function(){
+    socket.broadcast.emit("toggle_overlay");
+  });
   
 });
 
