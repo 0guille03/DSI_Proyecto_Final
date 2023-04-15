@@ -1,20 +1,11 @@
 const socket = io();
-const button = document.querySelector("button");
-const input = document.querySelector("input");
-const msg = document.querySelector("#msg");
+var search = document.querySelector("#search_button");
 
-button.addEventListener("click", function(e) {
-  const text = input.value;
-  //enviarselo al servidor
-  socket.emit("message_evt", {msg: text});
-});
-
-
-socket.on("message_evt", function(message){
-  msg.innerHTML = message.msg;
+search.addEventListener("click", function() {
+  //socket.emit("message_evt", {msg: text});
+  window.location.href = "search.html";
 });
 
 function loadPlayer(){
-  console.log("i am at the beggining of load player function");
-  socket.emit("device_on", {msg: "player/selector.html"});
+  socket.emit("change_html", {msg: "player/selector.html"});
 }

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Controller</title>
+    <link href="search.css" rel="stylesheet" type="text/css" />
+    <script src="/socket.io/socket.io.js"></script>
+  </head>
+
+  <body onload="loadPlayer()">
+    <script src="search.js"></script>
+
+    <!--Help icon part-->
+    <div id="back_div">
+      <div id="back_button"><b><</b></div>
+    </div>
+
+    <!--Search icon part-->
+    <div id="search_div">
+      <div id="search_button"><img id="search_img" src="../img/speaker.png" alt="Magnifying glass"></div>
+    </div>
+
+    <!--Control buttons part-->
+    <div id="control_div">
+      <input type="text" id="vname" autofocus>
+    </div>
+    
+  </body>
+</html>

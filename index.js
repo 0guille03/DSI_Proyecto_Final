@@ -20,7 +20,7 @@ io.on('connection', (socket) => {
     socket.broadcast.emit("message_evt", message);
   });
 
-  socket.on("device_on", function(html_path){
+  socket.on("change_html", function(html_path){
     console.log("Device on received by" + socket.id );
     socket.broadcast.emit("change_html", html_path);
   
