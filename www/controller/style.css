@@ -15,8 +15,8 @@ html, body {
     padding-right: 20px;
 }
 #help_button{
-    height: 50px;
-    width: 50px;
+    height: 40px;
+    width: 40px;
 
     display: flex;
     justify-content: center;
@@ -24,6 +24,7 @@ html, body {
 
     background-color: #598487;
     border: 5px solid #497174;
+    color:#D6E4E5;
     border-radius:30px; 
     font-size: 28px;
 }
@@ -50,8 +51,10 @@ html, body {
     border-radius:30px; 
 }
 #search_img{
-    height: 80px;
-    width: 80px;
+    height: 70px;
+    width: 70px;
+
+    filter: invert(97%) sepia(10%) saturate(286%) hue-rotate(129deg) brightness(94%) contrast(91%);
 }
 
 /* Control buttons part */
