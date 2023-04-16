@@ -11,7 +11,7 @@ var playing_video = null;
 io.on('connection', (socket) => {
   console.log(`socket connected ${socket.id}`);
 
-  /* Change screen message */
+  /* Change screen */
   socket.on("change_html", function(html_path) {
     console.log("Device on received by" + socket.id);
     socket.broadcast.emit("change_html", html_path);
@@ -42,7 +42,10 @@ io.on('connection', (socket) => {
     playing_video = video.msg;
     socket.broadcast.emit("start_player");
   });
-
+  socket.on("get_video_to_play", function() {
+    console.log("Video is asked");
+    socket.broadcast.emit("set_video_to_play", {msg: playing_video});
+  });
 
   /* Video controll section */
   socket.on("play_video", function() {
