@@ -5,12 +5,13 @@ function getVideo(){
     console.log("Asking server for video");
 }
 
-socket.on("vid_play", function(video){
-    console.log(video.msg)
+socket.on("vid_play", function(){
+    console.log("reached")
+    /*console.log(video.msg)
     let video_html=document.querySelector("#playingVideo");
     console.log(video_html)
     video_html.src="../video/"+video.msg+".mp4";
     console.log(video_html)
-    video_html.play();
+    video_html.play();*/
 });
 
