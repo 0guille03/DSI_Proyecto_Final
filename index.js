@@ -26,12 +26,14 @@ io.on('connection', (socket) => {
 
   /* Video controll section */
   socket.on("select_changed", function(option) {
+    console.log("Controller select move: " + option.msg);
     socket.broadcast.emit("select_changed", option);
   });
 
 
   /* Video controll section */
   socket.on("play_video", function() {
+    console.log("Play video received: " + option.msg);
     socket.broadcast.emit("play_video");
   });
   socket.on("pause_video", function() {
