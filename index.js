@@ -45,6 +45,7 @@ io.on('connection', (socket) => {
   socket.on("get_video_to_play", function() {
     console.log("Video is sent: "+ playing_video);
     socket.broadcast.emit("set_video_to_play", {msg: playing_video});
+    console.log("sent");
   });
 
   /* Video controll section */
