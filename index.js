@@ -36,6 +36,13 @@ io.on('connection', (socket) => {
     socket.broadcast.emit("set_playing");
   });
 
+  /* Fill playing video variable with current video */
+  socket.on("video_to_play", function(video) {
+    console.log("Video selected is: "+ video.msg);
+    playing_video = video.msg;
+    socket.broadcast.emit("start_player");
+  });
+
 
   /* Video controll section */
   socket.on("play_video", function() {

@@ -1,6 +1,6 @@
 const socket = io();
 var videos_cod = {1:"all_too_well",
-                  2:"video_placeholder",
+                  2:"22",
                   3:"video_placeholder",
                   4:"video_placeholder",
                   5:"video_placeholder",
@@ -38,13 +38,19 @@ socket.on("select_changed", function(option) {
             + "'><img " 
             + ( selected === item ? "id='selected'" : "" ) 
             + " src='../img/" + videos_cod[item]
-            +".jpg' height='220px'><br>All Too Well</div>"; 
+            +".jpg' height='220px'><br>" + videos_cod[item] + "</div>"; 
     });
 
     document.getElementById("videos_div").innerHTML = new_html;
  
     
   }
+});
+
+/* Select Playing video */
+socket.on("set_playing", function() {
+  socket.emit("video_to_play", {msg: videos_cod[selected]});
+  window.location.href = "video_player.html";
 });
 
 
