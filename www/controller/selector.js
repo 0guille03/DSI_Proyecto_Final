@@ -26,8 +26,8 @@ right_b.addEventListener("click", function() {
   socket.emit("select_changed", {msg: "r"});
 });
 ok_b.addEventListener("click", function() {
-  //socket.emit("playing_video", {msg: "r"});
-  window.location.href = "video_player.html";
+  socket.emit("set_playing");
+  //window.location.href = "video_player.html";
 });
 
 
