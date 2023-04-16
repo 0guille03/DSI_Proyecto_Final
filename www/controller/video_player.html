@@ -8,35 +8,35 @@
 </head>
 
 <body>
- <div id="video_container">
-  <video class="myVideo" autoplay playsinline controls="false"/>
+  <div id="video_container">
+    <video class="myVideo" autoplay playsinline controls="false"/S>
   </div>
       <!--Go back icon part-->
   <div id="controls_container">
-  <div id="back_div">
-    <div id="back_button"><b><</b></div>
+    <div id="back_div">
+      <div id="back_button"><b><</b></div>
     </div>
-  <div id="play_pause_container">
-    <button class="play-pause" onclick="togglePlay()">
-      <span class="play">&#9658;</span>
-      <span class="pause" style="display: none;">&#10074;&#10074;</span>
-    </button>
-  </div>
-  
-  <div id="volume_container">
-    <div class="volume-control">
-      <button class="volume-button volume-down">&#8722;</button>
-      <div class="volume-icon">🔊</div>
-      <button class="volume-button volume-up">&#43;</button>
+    <div id="play_pause_container">
+      <button class="play-pause" onclick="togglePlay()">
+        <span class="play">&#9658;</span>
+        <span class="pause" style="display: none;">&#10074;&#10074;</span>
+      </button>
     </div>
-  </div>
-  
-  <div id="slider_container">
-    <input type="range" min="0" max="100" value="0" class="progress-bar">
-  </div>
+    
+    <div id="volume_container">
+      <div class="volume-control">
+        <button class="volume-button volume-down">&#8722;</button>
+        <div class="volume-icon">🔊</div>
+        <button class="volume-button volume-up">&#43;</button>
+      </div>
+    </div>
+    
+    <div id="slider_container">
+      <input type="range" min="0" max="100" value="0" class="progress-bar">
+    </div>
   </div>
 
-<script src="video_player.js"></script>    
+  <script src="video_player.js"></script>    
 </body>
 
 </html>
