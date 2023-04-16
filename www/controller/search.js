@@ -1,4 +1,4 @@
-const socket = io();
+//const socket = io();
 const back_button = document.querySelector("#back_button");
 const input = document.querySelector("#vname");
 
@@ -14,7 +14,7 @@ back_button.addEventListener("click", function() {
 
 function loadPlayer(){
   console.log("i am at the beggining of load player function");
-  socket.emit("device_on", {msg: "player/selector.html"});
+  //socket.emit("device_on", {msg: "player/selector.html"});
 }
 
 // ------------------------- API de voz --------------------------------------------------------------- 
@@ -27,18 +27,19 @@ const recognition = new SpeechRecognition();
 const speechRecognitionList = new SpeechGrammarList();
 
 // public <color> = rojo | verde | amarillo;
-const colors = { rojo: "#ff0000", verde: "#00ff00", amarillo: "#ffff00", azul: "#0000ff" };
+/*const colors = { rojo: "#ff0000", verde: "#00ff00", amarillo: "#ffff00", azul: "#0000ff" };
 const grammar =
-  "#JSGF V1.0; grammar colors; public <color> = " +
-  Object.keys(colors).join(" | ") +
-  " ;";
+  "#JSGF V1.0; 
+  grammar colors; 
+  public <color> = " + Object.keys(colors).join(" | ") +
+  " ;";*/
 
-speechRecognitionList.addFromString(grammar, 1);
+/*speechRecognitionList.addFromString(grammar, 1);
 recognition.grammars = speechRecognitionList;
 recognition.continuous = false;
 recognition.lang = "es-ES";
 recognition.interimResults = false;
-recognition.maxAlternatives = 1;
+recognition.maxAlternatives = 1;*/
 
 const search_button = document.querySelector("#search_button");
 search_button.addEventListener("click", function(e) {
