@@ -2,18 +2,15 @@
   <head>
       <script type="text/javascript" src="/socket.io/socket.io.js"></script>
       <script type="text/javascript"src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-
       <link rel="stylesheet" href="style.css">
   </head>
   <body>
-
       <div id="title">
         <p><b>Escanear QR con el teléfono móvil</b></p>               
       </div>
       <div id="base_container">
         <div id="qrcode"></div>
       </div>
-
     <script>
       const socket = io();
       socket.on("change_html", function(path){
@@ -22,7 +19,8 @@
         
       });
       const qrcode = new QRCode("qrcode", {
-        text: "https://DSIProyectoFinal.Guillehernandez.repl.co/controller/selector.html",
+        /*text: "https://DSIProyectoFinal.Guillehernandez.repl.co/controller/selector.html",*/
+        text: "https://DSIProyectoFinal.lauramardi.repl.co/controller/selector.html",
         width: 300,
         height: 300,
         colorDark: "#000000",
