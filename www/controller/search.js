@@ -2,7 +2,7 @@
 const back_button = document.querySelector("#back_button");
 const input = document.querySelector("#vname");
 
-back_button.addEventListener("touchend", function() {
+back_button.addEventListener("click", function() {
   window.location.href = "selector.html";
 });
 
@@ -53,6 +53,8 @@ recognition.onresult = function(event) {
   const result = event.results[0][0].transcript;
   console.log(`Resultado: ${result}.`);
   console.log(`Confianza: ${event.results[0][0].confidence}`);
+
+  input.value = result;
 };
 
 recognition.onspeechend = function() {
@@ -62,10 +64,10 @@ recognition.onspeechend = function() {
 
 /* Para habilitar reconocimiento continuo */
 
-recognition.onend = function() {
+/*recognition.onend = function() {
   console.log("end");
   recognition.start();
-}
+}*/
 
 /*
 recognition.onnomatch = function(event) {

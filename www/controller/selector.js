@@ -2,7 +2,7 @@ const socket = io();
 
 const search_button = document.querySelector("#search_button");
 
-search_button.addEventListener("touchend", function() {
+search_button.addEventListener("click", function() {
   window.location.href = "search.html";
 });
 
