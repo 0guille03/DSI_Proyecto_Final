@@ -1,10 +1,10 @@
 const socket = io();
 var videos_cod = {1:"all_too_well",
-                  2:"",
-                  3:"",
-                  4:"",
-                  5:"",
-                  6:""}
+                  2:"video_placeholder",
+                  3:"video_placeholder",
+                  4:"video_placeholder",
+                  5:"video_placeholder",
+                  6:"video_placeholder"}
 var video_layout = [1,2,3,4,5,6];
 var selected = 1;
 
