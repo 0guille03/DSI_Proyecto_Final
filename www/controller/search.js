@@ -1,4 +1,4 @@
-//const socket = io();
+const socket = io();
 const back_button = document.querySelector("#back_button");
 const input = document.querySelector("#vname");
 
@@ -14,7 +14,7 @@ back_button.addEventListener("click", function() {
 
 function loadPlayer(){
   console.log("i am at the beggining of load player function");
-  //socket.emit("device_on", {msg: "player/selector.html"});
+  socket.emit("device_on", {msg: "player/selector.html"});
 }
 
 // ------------------------- API de voz --------------------------------------------------------------- 
