@@ -6,7 +6,7 @@ const io = require('socket.io')(server);
 
 app.use('/', express.static(path.join(__dirname, 'www')));
 
-let visSocket;
+var playing_video = null;
 
 io.on('connection', (socket) => {
   console.log(`socket connected ${socket.id}`);
@@ -30,28 +30,44 @@ io.on('connection', (socket) => {
     socket.broadcast.emit("select_changed", option);
   });
 
+  /* Select video option */
+  socket.on("set_playing", function() {
+    console.log("Video has been selected");
+    socket.broadcast.emit("set_playing");
+  });
+
 
   /* Video controll section */
   socket.on("play_video", function() {
-    console.log("Play video received: " + option.msg);
+    console.log("Play the video");
+    socket.broadcast.emit("play_video");
+  });
+  socket.on("play_video", function() {
+    console.log("Play the video");
     socket.broadcast.emit("play_video");
   });
   socket.on("pause_video", function() {
+    console.log("Pause the video");
     socket.broadcast.emit("pause_video");
   });
   socket.on("volume_up", function() {
+    console.log("Vol up the video");
     socket.broadcast.emit("volume_up");
   });
   socket.on("volume_down", function() {
+    console.log("Vol down the video");
     socket.broadcast.emit("volume_down");
   });
   socket.on("go_back", function(secs) {
+    console.log("Rewind the video: "+secs.msg);
     socket.broadcast.emit("go_back", secs);
   });
   socket.on("go_forward", function(secs) {
+    console.log("Foward the video: "+secs.msg);
     socket.broadcast.emit("go_forward", secs);
   });
   socket.on("toggle_overlay", function() {
+    console.log("Toggle overlay");
     socket.broadcast.emit("toggle_overlay");
   });
 });
