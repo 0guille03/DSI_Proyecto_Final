@@ -1,0 +1,147 @@
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    background-color: #EFF5F5;
+}
+
+/* Help icon part */
+#help_div{ 
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    width: auto;
+    height: 90px;
+    padding-right: 20px;
+}
+#help_button{
+    height: 40px;
+    width: 40px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #598487;
+    border: 5px solid #497174;
+    color:#D6E4E5;
+    border-radius:30px; 
+    font-size: 28px;
+}
+
+/* Search icon part */
+#search_div{ 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+    height: 120px;
+    padding-bottom: 60px;
+}
+#search_button{
+    height: 100px;
+    width: 100px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #598487;
+    border: 5px solid #497174;
+    border-radius:30px; 
+}
+#search_img{
+    height: 70px;
+    width: 70px;
+
+    filter: invert(97%) sepia(10%) saturate(286%) hue-rotate(129deg) brightness(94%) contrast(91%);
+}
+
+/* Control buttons part */
+#control_div{ 
+    height: 100px;
+    width: auto;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#ok_b{
+    height: 80px;
+    width: 80px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #598487;
+    border: 5px solid #497174;
+    border-radius: 60px; 
+    font-size: 25px;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+
+#left_b{
+    height: 80px;
+    width: 80px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    transform: rotate(-90deg);
+}
+#right_b{
+    height: 80px;
+    width: 80px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    transform: rotate(90deg);
+}
+#up_b{
+    height: 80px;
+    width: 80px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#down_b{
+    height: 80px;
+    width: 80px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    transform: rotate(180deg);
+}
+
+
+#triangle{   
+    height: 0px;
+    width: 0px;
+
+    position: absolute;
+    border-left: 40px solid transparent;
+    border-right: 40px solid transparent;
+    border-bottom: 70px solid #497174;
+}
+#triangle::before{ 
+    content:"";  
+    height: 0px;
+    width: 0px;
+    
+    position: relative;
+    border-left: 34px solid transparent;
+    border-right: 34px solid transparent;
+    border-bottom: 59px solid #598487;
+    right: 34px;
+    top: -11px;
+}

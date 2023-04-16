@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Controller</title>
+    <link href="selector.css" rel="stylesheet" type="text/css" />
+    <script src="/socket.io/socket.io.js"></script>
+  </head>
+
+  <body onload="loadPlayer()">
+    <!--Help icon part-->
+    <div id="help_div">
+      <div id="help_button"><b>i</b></div>
+    </div>
+
+    <!--Search icon part-->
+    <div id="search_div">
+      <div id="search_button"><img id="search_img" src="../img/magnifying-glass.png" alt="Magnifying glass"></div>
+    </div>
+
+    <!--Control buttons part-->
+    <div id="control_div">
+      <div id="up_b"><div id="triangle"></div></div>
+    </div>
+
+    <div id="control_div">
+      <div id="left_b"><div id="triangle"></div></div>
+      <div id="ok_b"></div>
+      <div id="right_b"><div id="triangle"></div></div>
+    </div>
+
+    <div id="control_div">
+      <div id="down_b"><div id="triangle"></div></div>
+    </div>
+    
+    <script src="selector.js"></script>
+  </body>
+</html>
