@@ -34,9 +34,9 @@ socket.on("select_changed", function(option) {
     let new_html = "";   
 
     video_layout.forEach( function (item) {
-      new_html += index + "<div class='grid-song' id='" + item 
+      new_html +="<div class='grid-song' id='" + item 
             + "'><img " 
-            + ( selected === index ? "id='selected'" : "" ) 
+            + ( selected === item ? "id='selected'" : "" ) 
             + " src='../img/" + videos_cod[item]
             +".jpg' height='220px'><br>All Too Well</div>"; 
     });
