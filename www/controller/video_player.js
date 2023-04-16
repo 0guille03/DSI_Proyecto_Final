@@ -1,4 +1,6 @@
 const video = document.querySelector('.myVideo');
+const dropdown = document.querySelector(".dropdown");
+const dropdownMenu = document.querySelector(".dropdown-menu");
 
 function togglePlay() {
   var playPauseBtn = document.querySelector('.play-pause');
@@ -48,10 +50,9 @@ navigator.mediaDevices
     }
   });
 
+// Function to display the dropdown elements
 
-
-
-
-/* */
-
-
+dropdown.addEventListener("click", function() {
+  console.log("entre");
+  dropdownMenu.classList.toggle("show");
+});
