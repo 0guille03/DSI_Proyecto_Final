@@ -41,7 +41,7 @@ socket.on("select_changed", function(option) {
             +".jpg' height='220px'><br>All Too Well</div>"; 
     });
 
-    document.getElementById("grid-container").innerHTML = new_html;
+    document.getElementById("videos_div").innerHTML = new_html;
  
     
   }
