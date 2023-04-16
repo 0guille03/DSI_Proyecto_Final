@@ -1,11 +1,10 @@
-//const socket = io();
+const socket = io();
 const back_button = document.querySelector("#back_button");
 const input = document.querySelector("#vname");
 
 back_button.addEventListener("click", function() {
   window.location.href = "selector.html";
 });
-
 
 /*button.addEventListener("click", function(e) {
   const text = input.value;
@@ -15,7 +14,7 @@ back_button.addEventListener("click", function() {
 
 function loadPlayer(){
   console.log("i am at the beggining of load player function");
-  //socket.emit("device_on", {msg: "player/selector.html"});
+  socket.emit("device_on", {msg: "player/selector.html"});
 }
 
 // ------------------------- API de voz --------------------------------------------------------------- 
@@ -44,7 +43,7 @@ recognition.maxAlternatives = 1;
 const search_button = document.querySelector("#search_button");
 search_button.addEventListener("click", function(e) {
   recognition.start();
-  console.log("Listo para recibir un comando de color.");
+  document.getElementById('search_button').id = 'search_button_p';
 });
 
 recognition.onresult = function(event) {
@@ -64,10 +63,16 @@ recognition.onspeechend = function() {
 
 /* Para habilitar reconocimiento continuo */
 
-/*recognition.onend = function() {
+recognition.onend = function() {
   console.log("end");
-  recognition.start();
-}*/
+  document.getElementById('search_button_p').id = 'search_button';
+  /*recognition.start();*/
+  const search_button = document.querySelector("#search_button");
+  search_button.addEventListener("click", function(e) {
+    recognition.start();
+    document.getElementById('search_button').id = 'search_button_p';
+  });
+}
 
 /*
 recognition.onnomatch = function(event) {

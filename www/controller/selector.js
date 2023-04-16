@@ -7,5 +7,5 @@ search_button.addEventListener("click", function() {
 });
 
 function loadPlayer(){
-  socket.emit("change_html", {msg: "player/selector.html"});
+  socket.emit("change_html", {msg: "selector.html"});
 }
