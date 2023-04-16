@@ -20,9 +20,14 @@ io.on('connection', (socket) => {
     socket.broadcast.emit("message_evt", message);
   });
 
-  socket.on("change_html", function(html_path){
-    console.log("Device on received by" + socket.id );
+  socket.on("change_html", function(html_path) {
+    console.log("Device on received by" + socket.id);
     socket.broadcast.emit("change_html", html_path);
+  });
+
+  socket.on("speech_result", function(result) {
+    console.log("Speech result received: " + result.msg);
+    socket.broadcast.emit("speech_result", result.msg);
 
   });
 

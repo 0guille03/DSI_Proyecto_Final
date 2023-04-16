@@ -12,11 +12,6 @@ back_button.addEventListener("click", function() {
   socket.emit("message_evt", {msg: text});
 });*/
 
-function loadPlayer(){
-  console.log("i am at the beggining of load player function");
-  socket.emit("device_on", {msg: "player/selector.html"});
-}
-
 // ------------------------- API de voz --------------------------------------------------------------- 
 var SpeechRecognition =
   window.SpeechRecognition || webkitSpeechRecognition;
@@ -45,6 +40,7 @@ const search_button = document.querySelector("#search_button");
 search_button.addEventListener("click", function(e) {
   recognition.start();
   document.getElementById('search_button').id = 'search_button_p';
+  socket.emit("change_html", {msg: "busqueda.html"});
 });
 
 recognition.onresult = function(event) {
@@ -55,6 +51,7 @@ recognition.onresult = function(event) {
   console.log(`Confianza: ${event.results[0][0].confidence}`);
 
   input.value = result;
+  socket.emit("speech_result", { msg: result });
 };
 
 recognition.onspeechend = function() {
