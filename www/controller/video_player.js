@@ -8,9 +8,13 @@ function togglePlay() {
   if (playPauseBtn.classList.contains('playing')) {
     playIcon.style.display = 'none';
     pauseIcon.style.display = 'block';
+    socket.emit("play_video");
+
   } else {
     pauseIcon.style.display = 'none';
     playIcon.style.display = 'block';
+    socket.emit("pause_video");
+
   }
 }
 
@@ -43,3 +47,11 @@ navigator.mediaDevices
       console.error(`getUserMedia error: ${error.name}`, error);
     }
   });
+
+
+
+
+
+/* */
+
+
