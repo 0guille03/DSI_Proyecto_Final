@@ -14,18 +14,19 @@ socket.on("change_html", function(path) {
 
 /* Movement received from the server */
 socket.on("select_changed", function(option) {
-  let option = option.msg;
+  console.log("select_changed recived" + option.msg)
+  let opt = option.msg;
   let new_sel;
-  if (option === "u"){
+  if (opt === "u"){
     if (selected - 3 > 0) new_sel = selected - 3;
   }
-  if (option === "d"){
+  if (opt === "d"){
     if (selected + 3 < video_layout.length + 1) new_sel = selected + 3;
   }
-  if (option === "l"){
+  if (opt === "l"){
     if (selected - 1 > 0) new_sel = selected - 1;
   }
-  if (option === "r"){
+  if (opt === "r"){
     if (selected + 1 < video_layout.length + 1) new_sel = selected + 1;
   }
   if (new_sel) {
