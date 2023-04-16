@@ -1,8 +1,8 @@
 const socket = io();
-var search = document.querySelector("#search_button");
 
-search.addEventListener("click", function() {
-  //socket.emit("message_evt", {msg: text});
+const search_button = document.querySelector("#search_button");
+
+search_button.addEventListener("touchend", function() {
   window.location.href = "search.html";
 });
 
