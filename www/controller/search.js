@@ -23,7 +23,6 @@ function sendTexttoPlayer(){
 
 }
 
-
 /*button.addEventListener("click", function(e) {
   const text = input.value;
   //enviarselo al servidor
@@ -69,6 +68,7 @@ recognition.onresult = function(event) {
   console.log(`Confianza: ${event.results[0][0].confidence}`);
 
   input.value = result;
+  sendTexttoPlayer();
   
 };
 
