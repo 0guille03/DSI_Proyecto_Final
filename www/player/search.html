@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Player</title>
+    <link href="search.css" rel="stylesheet" type="text/css" />
+    <script src="/socket.io/socket.io.js"></script>
+  </head>
+  <body>
+    <div class = "flex-container">   
+      <!--Main part-->
+      <div class="col-12 row-12 main">
+          <div class="row-1 header_main">
+              <div class="col-1">
+                <img id= "search_img" src="../img/magnifying-glass.png">
+              </div>
+              <div class="col-11" id="search-query">
+                ...
+              </div>
+          </div>
+          <div class="grid-container" id="videos_div">
+            <div class="grid-song" id="1">
+                <img id="selected" src="../img/all_too_well.jpg" height="220px">
+                <br><br>All Too Well
+            </div>
+            <div class="grid-song" id="2">
+                <img src="../img/22.jpg" height="220px">
+                <br><br>22
+            </div>
+            <div class="grid-song" id="3">
+                <img src="../img/video_placeholder.jpg" height="220px">
+                <br><br>Video 3
+            </div>
+            <div class="grid-song" id="4">
+                <img src="../img/video_placeholder.jpg" height="220px">
+                <br><br>Video 4
+            </div>
+            <div class="grid-song" id="5">
+                <img src="../img/video_placeholder.jpg" height="220px">
+                <br><br>Video 5
+            </div>
+            <div class="grid-song" id="6">
+                <img src="../img/video_placeholder.jpg" height="220px">
+                <br><br>Video 6
+            </div>
+                
+        <script src="search.js"></script> 
+      </div> 
+    </div>
+  </body>
+  
+</html>

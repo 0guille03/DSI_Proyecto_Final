@@ -6,6 +6,23 @@ back_button.addEventListener("click", function() {
   window.location.href = "selector.html";
 });
 
+function loadSearch(){
+  socket.emit("change_html", {msg: "search.html"});
+
+}
+
+$(document).ready(function(){
+  $("#vname").on("input", function(){
+    sendTexttoPlayer();
+  });
+});
+
+function sendTexttoPlayer(){
+  const search_text = input.value;
+  socket.emit("speech_result", { msg: search_text });
+
+}
+
 /*button.addEventListener("click", function(e) {
   const text = input.value;
   //enviarselo al servidor
@@ -51,7 +68,8 @@ recognition.onresult = function(event) {
   console.log(`Confianza: ${event.results[0][0].confidence}`);
 
   input.value = result;
-  socket.emit("speech_result", { msg: result });
+  sendTexttoPlayer();
+  
 };
 
 recognition.onspeechend = function() {
