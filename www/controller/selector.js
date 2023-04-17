@@ -1,3 +1,5 @@
+const { DEFAULT_ECDH_CURVE } = require("tls");
+
 const socket = io();
 
 const search_button = document.querySelector("#search_button");
@@ -46,14 +48,37 @@ function doubleTap() {
   var now = new Date().getTime();
   var timesince = now - last_tap;
   if ((timesince < 600) && (timesince > 0)) {
-    socket.emit("toggle_overlay");
+    detectarGesto();
   }
-  last_tap = new Date().getTime();
+  last_tap = now;
+}
+
+var x;
+var y;
+var time;
+
+function touchStart(e){
+  time = new Date().getTime();
+  x = e.x;
+  y = e.y;
+}
+
+function touchEnd(e){
+  if (Date().getTime() - time > 1000 && abs(e.x - x) < 1 && abs(e.y - y) < 1){
+    socket.emit("toggle_overlay")
+  }
+}
+
+
+function detectarGesto(){
+  //TODO
 }
 
 const main = document.querySelector("#main");
 
 main.addEventListener("touchstart", doubleTap);
+main.addEventListener("touchstart", touchStart);
+main.addEventListener("touchend", touchEnd);
 
 if ('Accelerometer' in window) {
   try {
