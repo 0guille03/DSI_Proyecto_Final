@@ -65,12 +65,17 @@ function touchStart(e){
 
 function touchEnd(e){
   if (Date().getTime() - time > 1000 && abs(e.x - x) < 1 && abs(e.y - y) < 1){
-    socket.emit("toggle_overlay")
+    toggleOverlay();
   }
 }
 
-
 function detectarGesto(){
+  alert("detectar gesto");
+  //TODO
+}
+
+function toggleOverlay(){
+  alert("toggle overlay")
   //TODO
 }
 
