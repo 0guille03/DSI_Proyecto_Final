@@ -13,9 +13,15 @@ function loadSearch(){
 
 $(document).ready(function(){
   $("#vname").on("input", function(){
-    alert("The paragraph was clicked.");
+    sendTexttoPlayer();
   });
 });
+
+function sendTexttoPlayer(){
+  const search_text = input.value;
+  socket.emit("speech_result", { msg: search_text });
+
+}
 
 
 /*button.addEventListener("click", function(e) {
@@ -63,7 +69,7 @@ recognition.onresult = function(event) {
   console.log(`Confianza: ${event.results[0][0].confidence}`);
 
   input.value = result;
-  socket.emit("speech_result", { msg: result });
+  
 };
 
 recognition.onspeechend = function() {
