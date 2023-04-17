@@ -53,18 +53,25 @@ function doubleTap() {
   last_tap = now;
 }
 
-var x;
-var y;
-var time;
+var startX, startY;
+var currentAngle = 0;
 
-function touchStart(e){
-  time = new Date().getTime();
-  x = e.x;
-  y = e.y;
+function handleTouchStart(event) {
+  startX = event.touches[0].clientX;
+  startY = event.touches[0].clientY;
+  currentAngle = 0;
 }
 
-function touchEnd(e){
-  if (Date().getTime() - time > 1000 && abs(e.x - x) < 1 && abs(e.y - y) < 1){
+function handleTouchMove(event) {
+  var currentX = event.touches[0].clientX;
+  var currentY = event.touches[0].clientY;
+  var angle = Math.atan2(currentY - startY, currentX - startX) * 180 / Math.PI;
+  var deltaAngle = angle - currentAngle;
+  currentAngle += deltaAngle;
+}
+
+function handleTouchEnd(event) {
+  if (Math.abs(currentAngle) >= 360) {
     toggleOverlay();
   }
 }
@@ -82,8 +89,9 @@ function toggleOverlay(){
 const main = document.querySelector("#main");
 
 main.addEventListener("touchstart", doubleTap);
-main.addEventListener("touchstart", touchStart);
-main.addEventListener("touchend", touchEnd);
+main.addEventListener("touchstart", handleTouchStart);
+main.addEventListener("touchmove", handleTouchMove);
+main.addEventListener("touchend", handleTouchEnd);
 
 if ('Accelerometer' in window) {
   try {
