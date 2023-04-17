@@ -36,7 +36,9 @@ socket.on("speech_result", function(result) {
 function updateHtml(){
   current_layout=[]
   let new_html = ""; 
+  console.log(coding);
   coding = {};
+  console.log(coding);
 
   video_layout.forEach(function (item) {
     if (videos_name[item].toLowerCase().includes(searched_word.toLowerCase())){
@@ -48,6 +50,7 @@ function updateHtml(){
 
       current_layout.push();
       coding[current_layout.length]=item;
+      console.log(coding);
     }  
   });
   if (current_layout.length === 0){
