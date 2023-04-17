@@ -1,4 +1,9 @@
 const video = document.querySelector('.myVideo');
+const back_button = document.querySelector("#back_button");
+
+back_button.addEventListener("click", function() {
+  window.location.href = "selector.html";
+});
 
 function togglePlay() {
   console.log("togglePlay() was called!");
