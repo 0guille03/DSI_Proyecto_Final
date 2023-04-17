@@ -2,15 +2,15 @@ const socket = io();
 var videos_cod = {1:"all_too_well",
                   2:"22",
                   3:"the_great_war",
-                  4:"video_placeholder",
-                  5:"video_placeholder",
-                  6:"video_placeholder"}
+                  4:"lavender_haze",
+                  5:"me",
+                  6:"out_of_the_woods"}
 var videos_name = {1:"All Too Well",
                   2:"22",
                   3:"The Great War",
-                  4:"Video 4",
-                  5:"Video 5",
-                  6:"Video 6"}
+                  4:"Lavender Haze",
+                  5:"ME!",
+                  6:"Out Of The Woods"}
 var coding = {1:1,
               2:2,
               3:3,
