@@ -33,6 +33,12 @@ socket.on("speech_result", function(result) {
   updateHtml();
 });
 
+/* Select Playing video */
+socket.on("set_playing", function() {
+  socket.emit("video_to_play", {msg: videos_cod[coding[selected]]});
+  window.location.href = "video_player.html";
+});
+
 function updateHtml(){
   current_layout=[]
   let new_html = ""; 
