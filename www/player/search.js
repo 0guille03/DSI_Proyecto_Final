@@ -43,15 +43,15 @@ function updateHtml(){
 
   video_layout.forEach(function (item) {
     if (videos_name[item].toLowerCase().includes(searched_word.toLowerCase())){
-      new_html +="<div class='grid-song' id='" + item 
-            + "'><img " 
-            + ( selected === item ? "id='selected'" : "" ) 
-            + " src='../img/" + videos_cod[item]
-            +".jpg' height='220px'><br><br>" + videos_name[item] + "</div>"; 
-
       current_layout.push(current_layout.length+1);
       coding[current_layout.length]=item;
       console.log(coding);
+      
+      new_html +="<div class='grid-song' id='" + item 
+            + "'><img " 
+            + ( selected === item ? "id='selected'" : "" ) 
+            + " src='../img/" + videos_cod[coding[item]]
+            +".jpg' height='220px'><br><br>" + videos_name[coding[item]] + "</div>"; 
     }  
   });
   if (current_layout.length === 0){
