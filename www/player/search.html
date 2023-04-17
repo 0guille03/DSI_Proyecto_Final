@@ -4,24 +4,19 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <title>Player</title>
-    <link href="selector.css" rel="stylesheet" type="text/css" />
+    <link href="search.css" rel="stylesheet" type="text/css" />
     <script src="/socket.io/socket.io.js"></script>
   </head>
   <body>
-    <script src="selector.js"></script>
-
     <div class = "flex-container">   
       <!--Main part-->
       <div class="col-12 row-12 main">
           <div class="row-1 header_main">
-              <div class="col-2 button_header" id="button1" onclick="changeButton('1')" style="background-color: #6f8e91;">
-                  Peliculas        
+              <div class="col-1">
+                <img id= "search_img" src="../img/magnifying-glass.png">
               </div>
-              <div class="col-2 button_header" id="button2" onclick="changeButton('2')">
-                  Mis videos        
-              </div>
-              <div class="col-2 button_header" id="button3" onclick="changeButton('3')">
-                  Reciente        
+              <div class="col-11" id="search-query">
+                ...
               </div>
           </div>
           <div class="grid-container" id="videos_div">
@@ -49,8 +44,10 @@
                 <img src="../img/video_placeholder.jpg" height="220px">
                 <br><br>Video 6
             </div>
-                 
+                
+        <script src="search.js"></script> 
       </div> 
     </div>
   </body>
+  
 </html>

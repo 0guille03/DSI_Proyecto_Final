@@ -27,7 +27,7 @@ right_b.addEventListener("click", function() {
 });
 ok_b.addEventListener("click", function() {
   socket.emit("set_playing");
-  //window.location.href = "video_player.html";
+  window.location.href = "video_player.html";
 });
 
 
