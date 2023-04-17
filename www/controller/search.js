@@ -6,6 +6,11 @@ back_button.addEventListener("click", function() {
   window.location.href = "selector.html";
 });
 
+function loadSearch(){
+  socket.emit("change_html", {msg: "search.html"});
+
+}
+
 /*button.addEventListener("click", function(e) {
   const text = input.value;
   //enviarselo al servidor

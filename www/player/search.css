@@ -3,7 +3,6 @@ html {
     font-size: 18px;
     width: 100% !important;
 }
-
 body, html {
     background-color: #EFF5F5;
     width: 100%;
@@ -19,19 +18,35 @@ body, html {
     text-align: center;
     height: 100%;
     width: 100%;
-  }
+}
 
+/* Header part */
 .main {
     padding: 1%;
 }
-
 .header_main {
     background-color: #497174;
     vertical-align: middle;
     display: flex;
     align-items: center;
 }
+#search-query{
+    text-align: left;
+    font-size: 30px;
+    background-color: #EFF5F5;
+    padding: 5px;
+    padding-left:20px;
+    margin-right: 20px;
+}
+#search_img{
+    height: 35px;
+    width: 35px;
 
+    filter: invert(97%) sepia(10%) saturate(286%) hue-rotate(129deg) brightness(94%) contrast(91%);
+}
+
+
+/* Video layout part */
 .grid-container {
     display: grid;
     width: 100%;
@@ -39,7 +54,6 @@ body, html {
     padding-bottom: 10%;
     justify-content: left;
 }
-
 .grid-song {
     position:relative;
     width: 100%;
@@ -47,16 +61,15 @@ body, html {
     justify-content: center;
     padding-top: 10%;
 }
-
-#search-query{
-    text-align: left;
+#selected {
+    box-shadow: 0px 0px 0px 10px rgba(73, 113, 116, 0.7);
 }
 
 
+/* Resizable page */
 [class*="col-"] {
     float: left;
 }
-
 .col-1 {width: 8.33%;}
 .col-2 {width: 16.66%;}
 .col-3 {width: 25%;}
