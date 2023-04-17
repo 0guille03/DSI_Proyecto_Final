@@ -1,8 +1,7 @@
 const video = document.querySelector('.myVideo');
-const dropdown = document.querySelector(".dropdown");
-const dropdownMenu = document.querySelector(".dropdown-menu");
 
 function togglePlay() {
+  console.log("togglePlay() was called!");
   var playPauseBtn = document.querySelector('.play-pause');
   var playIcon = playPauseBtn.querySelector('.play');
   var pauseIcon = playPauseBtn.querySelector('.pause');
@@ -10,13 +9,9 @@ function togglePlay() {
   if (playPauseBtn.classList.contains('playing')) {
     playIcon.style.display = 'none';
     pauseIcon.style.display = 'block';
-    socket.emit("play_video");
-
   } else {
     pauseIcon.style.display = 'none';
     playIcon.style.display = 'block';
-    socket.emit("pause_video");
-
   }
 }
 
@@ -63,7 +58,7 @@ function stopCamera() {
 }
 // Function to display the dropdown elements
 var dropdown = document.getElementById("dropdown");
-var dropdownMenu =document.getElementById("dropdownmenu");
+var dropdownMenu = document.getElementById("dropdownmenu");
 
 dropdown.addEventListener("click", function() {
   console.log("entre");
