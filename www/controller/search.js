@@ -11,6 +11,13 @@ function loadSearch(){
 
 }
 
+$(document).ready(function(){
+  $("#vname").on("input", function(){
+    alert("The paragraph was clicked.");
+  });
+});
+
+
 /*button.addEventListener("click", function(e) {
   const text = input.value;
   //enviarselo al servidor
