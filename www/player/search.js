@@ -29,7 +29,7 @@ function updateHtml(){
   let new_html = ""; 
 
   video_layout.forEach(function (item) {
-    if (videos_name[item].toLowerCase.includes(searched_word.toLowerCase)){
+    if (videos_name[item].toLowerCase().includes(searched_word.toLowerCase())){
       new_html +="<div class='grid-song' id='" + item 
             + "'><img " 
             + ( selected === item ? "id='selected'" : "" ) 
