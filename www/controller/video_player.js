@@ -21,7 +21,8 @@ const constraints = {
   video: true,
 };
 
-navigator.mediaDevices
+function startCamera(){
+  navigator.mediaDevices
   .getUserMedia(constraints)
   .then((stream) => {
     const videoTracks = stream.getVideoTracks();
@@ -44,9 +45,21 @@ navigator.mediaDevices
     } else {
       console.error(`getUserMedia error: ${error.name}`, error);
     }
+  });}
+
+function stopCamera() {
+  const stream = video.srcObject;
+  const tracks = stream.getTracks();
+
+  tracks.forEach(function (track) {
+    track.stop();
   });
 
+  video.srcObject = null;
+}
 // Function to display the dropdown elements
+var dropdown = document.getElementById("dropdown");
+var dropdownMenu =document.getElementById("dropdownmenu");
 
 dropdown.addEventListener("click", function() {
   console.log("entre");
