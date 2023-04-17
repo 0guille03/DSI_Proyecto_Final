@@ -16,6 +16,10 @@ io.on('connection', (socket) => {
     console.log("Device on received by" + socket.id);
     socket.broadcast.emit("change_html", html_path);
   });
+  socket.on("exit_search", function() {
+    console.log("Exited from search");
+    socket.broadcast.emit("exit_search");
+  });
 
   /* Send search result */
   socket.on("speech_result", function(result) {
