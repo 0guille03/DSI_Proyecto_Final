@@ -46,13 +46,12 @@ function updateHtml(){
       current_layout.push(current_layout.length+1);
       coding[current_layout.length]=item;
       console.log(coding);
-      console.log(current_layout);
       
       new_html +="<div class='grid-song' id='" + item 
             + "'><img " 
-            + ( selected === item ? "id='selected'" : "" ) 
-            + " src='../img/" + videos_cod[coding[item]]
-            +".jpg' height='220px'><br><br>" + videos_name[coding[item]] + "</div>"; 
+            + ( current_layout.length === 1 ? "id='selected'" : "" ) 
+            + " src='../img/" + videos_cod[item]
+            +".jpg' height='220px'><br><br>" + videos_name[item] + "</div>"; 
     }  
   });
   if (current_layout.length === 0){
