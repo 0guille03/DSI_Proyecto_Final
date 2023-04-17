@@ -39,6 +39,7 @@ function updateHtml(){
   console.log(coding);
   coding = {};
   console.log(coding);
+  selected = 1;
 
   video_layout.forEach(function (item) {
     if (videos_name[item].toLowerCase().includes(searched_word.toLowerCase())){
