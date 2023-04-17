@@ -1,5 +1,3 @@
-const { DEFAULT_ECDH_CURVE } = require("tls");
-
 const socket = io();
 
 const search_button = document.querySelector("#search_button");
