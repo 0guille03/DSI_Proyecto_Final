@@ -1,5 +1,5 @@
 const socket = io();
-const vide = document.getElementById("playingVideo");
+const video = document.getElementById("playingVideo");
 function getVideo(){
     socket.emit("get_video_to_play");
     console.log("Asking server for video");
