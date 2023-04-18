@@ -4,6 +4,10 @@ html, body {
   margin: 0;
 }
 
+div{
+  display: block;
+}
+
 #video_container {
   position: relative;
   z-index: 1;
@@ -232,4 +236,9 @@ html, body {
 .show{
   display:block !important;
 
+}
+
+#msg{
+  margin-top: 2%;
+  text-align: center;
 }

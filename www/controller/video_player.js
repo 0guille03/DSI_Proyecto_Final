@@ -31,29 +31,30 @@ function startCamera(){
   hang.style.display = "block";
   video.style.display = "block";
   navigator.mediaDevices
-  .getUserMedia(constraints)
-  .then((stream) => {
-    const videoTracks = stream.getVideoTracks();
-    console.log("Got stream with constraints:", constraints);
-    console.log(`Using video device: ${videoTracks[0].label}`);
-    stream.onremovetrack = () => {
-      console.log("Stream ended");
-    };
-    video.srcObject = stream;
-  })
-  .catch((error) => {
-    if (error.name === "ConstraintNotSatisfiedError") {
-      console.error(
-        `The resolution ${constraints.video.width.exact}x${constraints.video.height.exact} px is not supported by your device.`
-      );
-    } else if (error.name === "PermissionDeniedError") {
-      console.error(
-        "You need to grant this page permission to access your camera and microphone."
-      );
-    } else {
-      console.error(`getUserMedia error: ${error.name}`, error);
-    }
-  });}
+    .getUserMedia(constraints)
+    .then((stream) => {
+      const videoTracks = stream.getVideoTracks();
+      console.log("Got stream with constraints:", constraints);
+      console.log(`Using video device: ${videoTracks[0].label}`);
+      stream.onremovetrack = () => {
+        console.log("Stream ended");
+      };
+      video.srcObject = stream;
+    })
+    .catch((error) => {
+      if (error.name === "ConstraintNotSatisfiedError") {
+        console.error(
+          `The resolution ${constraints.video.width.exact}x${constraints.video.height.exact} px is not supported by your device.`
+        );
+      } else if (error.name === "PermissionDeniedError") {
+        console.error(
+          "You need to grant this page permission to access your camera and microphone."
+        );
+      } else {
+        console.error(`getUserMedia error: ${error.name}`, error);
+      }
+    });
+}
 
 function stopCamera() {
   var video_call = document.querySelector('.call');
@@ -64,7 +65,7 @@ function stopCamera() {
   const stream = video.srcObject;
   const tracks = stream.getTracks();
 
-  tracks.forEach(function (track) {
+  tracks.forEach(function(track) {
     track.stop();
   });
 
@@ -77,7 +78,8 @@ function Dropdown(){
   var dropdownMenu = document.getElementById("dropdownmenu");
   dropdownMenu.classList.toggle("show");
   
-}
+var dropdownBtn = document.getElementById("videocall");
+var dropdownMenu = document.getElementById("dropdownmenu");
 
 window.addEventListener("click", function(event) {
   var dropdownMenu = document.getElementById("dropdownmenu");
@@ -87,3 +89,78 @@ window.addEventListener("click", function(event) {
     dropdownMenu.classList.remove('show');
   }
 });
+
+//Code for gestures
+
+let doubleTap = false;
+let timerId;
+
+document.addEventListener('dblclick', function() {
+  if (doubleTap){
+    doubleTap = false;
+    window.removeEventListener('deviceorientation', handleTilt);
+    document.getElementById("msg").innerHTML = "";
+  }
+  else{
+    doubleTap = true;
+    window.addEventListener('deviceorientation', handleTilt);
+    document.getElementById("msg").innerHTML = "Detectando gestos...";
+  }
+});
+
+
+function handleTilt(event) {
+  if (doubleTap) {
+    let roll = event.gamma;
+    let pitch = event.beta;
+    if (pitch != 0 && roll != 0) {
+      if (roll < -45) {
+        alert("go back");
+      }
+      if (roll > 45) {
+        alert("go forward");
+      }
+      if (pitch < 0) {
+        alert("volume down");
+      }
+      if (pitch > 90) {
+        alert("volume up");
+      }
+    }
+  }
+}
+
+var last_tap = 0;
+
+var startX, startY, touchStartTimestamp;
+
+function handleTouchStart(event) {
+  console.log("handler2");
+  startX = event.touches[0].clientX;
+  startY = event.touches[0].clientY;
+  touchStartTimestamp = event.timeStamp;
+}
+
+function handleTouchEnd(event) {
+  var currX = event.changedTouches[0].clientX;
+  var currY = event.changedTouches[0].clientY;
+  var touchEndTimestamp = event.timeStamp;
+  if (Math.abs(currX - startX) < 50 && Math.abs(currY - startY) < 50 && Math.abs(touchEndTimestamp - touchStartTimestamp) > 500) {
+    toggleOverlay();
+  }
+}
+
+
+var container = document.getElementById("controls_container");
+
+function toggleOverlay() {
+
+  if (container.style.display === "none") {
+    container.style.display = "flex";
+  } else {
+    container.style.display = "none";
+  }
+}
+
+document.addEventListener("touchstart", handleTouchStart);
+document.addEventListener("touchend", handleTouchEnd); 

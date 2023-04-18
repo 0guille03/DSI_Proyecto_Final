@@ -86,10 +86,6 @@ io.on('connection', (socket) => {
     console.log("Foward the video: "+secs.msg);
     socket.broadcast.emit("go_forward", secs);
   });
-  socket.on("toggle_overlay", function() {
-    console.log("Toggle overlay");
-    socket.broadcast.emit("toggle_overlay");
-  });
 });
 
 
