@@ -84,31 +84,16 @@ html, body {
   margin-left: 15px;
   margin-right: 15px;
 }
-.play {
-  color: #D6E4E5;
-  font-size: 60px;
-}
+  .play, .pause {
+    filter: invert(95%) sepia(16%) saturate(145%) hue-rotate(130deg) brightness(94%) contrast(90%);
+    width: 50px;
+    height: 50px;
+  }
 
-.pause {
-  color: #D6E4E5;
-  font-size: 60px;
-}
-
-.play-pause .play {
-  display: block;
-}
-
-.play-pause .pause {
-  display: none;
-}
-
-.play-pause.playing .pause {
-  display: block;
-}
-
-.play-pause.playing .play {
-  display: none;
-}
+  .pause {
+    display: none;
+  }
+  
 
 .slider_container{
   display: flex;
@@ -193,9 +178,9 @@ html, body {
   right: 10px;
 }
 
-#videocall{
-  height: 45px;
-  width: 45px;
+.videocall{
+  height: 65px;
+  width: 65px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -206,15 +191,23 @@ html, body {
   font-size: 28px;
 }
 
+.call {
+  display: block;
+  position: relative;
+  height: 55%;
+  width: 55%;
+  filter: invert(95%) sepia(16%) saturate(145%) hue-rotate(130deg) brightness(94%) contrast(90%);
+}
+.hang {
+  display: none;
+  position: relative;
+  height: 55%;
+  width: 55%;
+  filter: invert(95%) sepia(16%) saturate(145%) hue-rotate(130deg) brightness(94%) contrast(90%);
+}
+
 .dropdown-menu {
   display: none;
-  position: absolute;
-  overflow: auto;
-  text-align: center;
-  top: 10%;
-  right: 1%;
-  background-color: #f1f1f1;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 }
 
 .dropdown-menu a {
@@ -228,5 +221,12 @@ html, body {
 }
 
 .show{
-  display:block;
+  display:block !important;
+  position: absolute;
+  overflow: auto;
+  text-align: center;
+  top: 10%;
+  right: 1%;
+  background-color: #f1f1f1;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 }

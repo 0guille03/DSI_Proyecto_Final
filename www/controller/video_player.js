@@ -5,19 +5,16 @@ const back_button = document.querySelector("#back_button");
 back_button.addEventListener("click", function() {
   window.location.href = "selector.html";
 });
-
 function togglePlay() {
-  console.log("togglePlay() was called!");
-  var playPauseBtn = document.querySelector('.play-pause');
-  var playIcon = playPauseBtn.querySelector('.play');
-  var pauseIcon = playPauseBtn.querySelector('.pause');
-  playPauseBtn.classList.toggle('playing');
-  if (playPauseBtn.classList.contains('playing')) {
-    playIcon.style.display = 'none';
-    pauseIcon.style.display = 'block';
+  var playImg = document.querySelector('.play-pause img.play');
+  var pauseImg = document.querySelector('.play-pause img.pause');
+  
+  if (playImg.style.display !== 'none') {
+    playImg.style.display = 'none';
+    pauseImg.style.display = 'block';
   } else {
-    pauseIcon.style.display = 'none';
-    playIcon.style.display = 'block';
+    playImg.style.display = 'block';
+    pauseImg.style.display = 'none';
   }
 }
 
@@ -27,6 +24,10 @@ const constraints = {
 };
 
 function startCamera(){
+  var video_call = document.querySelector('.call');
+  var hang = document.querySelector('.hang');
+  video_call.style.display = 'none';
+  hang.style.display = "block";
   video.style.display = "block";
   navigator.mediaDevices
   .getUserMedia(constraints)
@@ -54,6 +55,10 @@ function startCamera(){
   });}
 
 function stopCamera() {
+  var video_call = document.querySelector('.call');
+  var hang = document.querySelector('.hang');
+  video_call.style.display = "block";
+  hang.style.display = "none";
   video.style.display = "none";
   const stream = video.srcObject;
   const tracks = stream.getTracks();
@@ -64,20 +69,20 @@ function stopCamera() {
 
   video.srcObject = null;
 }
-// Function to display the dropdown elements
-var dropdown = document.getElementById("dropdown");
-var dropdownMenu = document.getElementById("dropdownmenu");
 
-dropdown.addEventListener("click", function() {
-  console.log("entre");
+
+function Dropdown(){
+  console.log("dropdown function");
+  var dropdownMenu = document.getElementById("dropdownmenu");
   dropdownMenu.classList.toggle("show");
-});
-var dropdownBtn = document.getElementById("videocall");
-var dropdownMenu = document.getElementById("dropdownmenu");
+  
+}
 
 window.addEventListener("click", function(event) {
+  var dropdownMenu = document.getElementById("dropdownmenu");
   // Verifica si el clic se hizo dentro o fuera del dropdown
-  if (!event.target.matches('#videocall') && dropdownMenu.classList.contains('show')) {
+  if (!event.target.matches('.activate-dropdown') && dropdownMenu.classList.contains('show')) {
+    console.log(event.target)
     dropdownMenu.classList.remove('show');
   }
 });

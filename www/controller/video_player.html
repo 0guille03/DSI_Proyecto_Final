@@ -16,22 +16,24 @@
     <div id="back_div">
       <div id="back_button"><b><</b></div>
     </div>
+    
     <div id="dropdown">
-      <button id="videocall"></button>
+      <button class="videocall activate-dropdown" onclick='Dropdown()'>
+        <img class="call activate-dropdown" src="../img/boton-facetime.png">
+        <img class="hang" src="../img/telefono-cuelga.png" onclick = 'stopCamera()'>
+        </button>
     </div>
     <div id="dropdownmenu" class="dropdown-menu" style="width: 10%;">
       <a onclick=startCamera() href="#">Contacto 1</a>
       <a onclick=startCamera() href="#">Contacto 2</a>
       <a onclick=startCamera() href="#">Contacto 3</a>
     </div>
-
-    <button onclick="stopCamera()">Colgar</button>
-    <div id="play_pause_container">
-      <button class="play-pause" onclick="togglePlay()">
-        <span class="play">&#9658;</span>
-        <span class="pause" style="display: none;">&#10074;&#10074;</span>
-      </button>
-    </div>
+<div id="play_pause_container">
+  <button class="play-pause" onclick="togglePlay()">
+    <img class="play" src="../img/punta-de-flecha-del-boton-de-reproduccion.png">
+    <img class="pause" src="../img/pausa.png">
+  </button>
+</div>
     
     <div id="volume_container">
       <div class="volume-control">
