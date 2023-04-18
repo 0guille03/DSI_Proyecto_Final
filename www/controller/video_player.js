@@ -80,7 +80,6 @@ function stopCamera() {
   video.srcObject = null;
 }
 
-
 function Dropdown(){
   console.log("dropdown function");
   var dropdownMenu = document.getElementById("dropdownmenu");
