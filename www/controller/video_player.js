@@ -26,7 +26,7 @@ const constraints = {
   video: true,
 };
 
-function startCamera(){
+function startCamera() {
   video.style.display = "block";
   navigator.mediaDevices
     .getUserMedia(constraints)
