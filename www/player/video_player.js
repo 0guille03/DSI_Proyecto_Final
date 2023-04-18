@@ -9,6 +9,10 @@ socket.on("change_html", function(path) {
     window.location.href = path.msg;
 });
 
+socket.on("exit_video_player", function() {
+    window.location.href = "selector.html";
+  });
+
 socket.on("set_video_to_play", function(video){
     console.log("reached");
     console.log(video.msg);

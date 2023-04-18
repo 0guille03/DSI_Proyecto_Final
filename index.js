@@ -62,10 +62,6 @@ io.on('connection', (socket) => {
     console.log("Play the video");
     socket.broadcast.emit("play_video");
   });
-  socket.on("play_video", function() {
-    console.log("Play the video");
-    socket.broadcast.emit("play_video");
-  });
   socket.on("pause_video", function() {
     console.log("Pause the video");
     socket.broadcast.emit("pause_video");

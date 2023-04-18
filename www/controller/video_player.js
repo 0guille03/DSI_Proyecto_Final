@@ -13,10 +13,18 @@ function togglePlay() {
   if (playImg.style.display !== 'none') {
     playImg.style.display = 'none';
     pauseImg.style.display = 'block';
+    socket.emit("pause_video");
   } else {
     playImg.style.display = 'block';
     pauseImg.style.display = 'none';
+    socket.emit("play_video");
   }
+}
+function volumeUp(){
+  socket.emit("volume_up");
+}
+function volumeDown(){
+  socket.emit("volume_down");
 }
 
 const constraints = {
@@ -77,9 +85,7 @@ function Dropdown(){
   console.log("dropdown function");
   var dropdownMenu = document.getElementById("dropdownmenu");
   dropdownMenu.classList.toggle("show");
-  
-var dropdownBtn = document.getElementById("videocall");
-var dropdownMenu = document.getElementById("dropdownmenu");
+}
 
 window.addEventListener("click", function(event) {
   var dropdownMenu = document.getElementById("dropdownmenu");
@@ -115,16 +121,16 @@ function handleTilt(event) {
     let pitch = event.beta;
     if (pitch != 0 && roll != 0) {
       if (roll < -45) {
-        alert("go back");
+        socket.emit("go_back", {msg: 10});
       }
       if (roll > 45) {
-        alert("go forward");
+        socket.emit("go_forward", {msg: 10});
       }
       if (pitch < 0) {
-        alert("volume down");
+        socket.emit("volume_down");
       }
       if (pitch > 90) {
-        alert("volume up");
+        socket.emit("volume_up");
       }
     }
   }
