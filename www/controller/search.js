@@ -1,8 +1,15 @@
 const socket = io();
 const back_button = document.querySelector("#back_button");
+const enter_button = document.querySelector("#enter_button");
 const input = document.querySelector("#vname");
 
+/* Change back to the controller  */
 back_button.addEventListener("click", function() {
+  socket.emit("exit_search");
+  window.location.href = "selector.html";
+});
+
+enter_button.addEventListener("click", function() {
   window.location.href = "selector.html";
 });
 
@@ -11,6 +18,7 @@ function loadSearch(){
 
 }
 
+/* Detects any change in the input and sends it to the player */
 $(document).ready(function(){
   $("#vname").on("input", function(){
     sendTexttoPlayer();
