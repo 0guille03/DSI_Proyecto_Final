@@ -91,7 +91,7 @@ let timerId;
 
 document.addEventListener('dblclick', function() {
   doubleTap = true;
-  
+
   window.addEventListener('deviceorientation', handleTilt);
 
   timerId = setTimeout(function() {
@@ -105,17 +105,27 @@ function handleTilt(event) {
   if (doubleTap) {
     let roll = event.gamma;
     let pitch = event.beta;
-    if (roll < -45) {
-      alert("go back");
-    }
-    if (roll > 45) {
-      alert("go forward");
-    }
-    if (pitch < -45) {
-      alert("volume up");
-    }
-    if (pitch > 45){
-      alert("volume down");
+    if (pitch != 0 && roll != 0) {
+      if (roll < -45) {
+        alert("go back");
+        window.removeEventListener('deviceorientation', handleTilt);
+        doubleTap = false;
+      }
+      if (roll > 45) {
+        alert("go forward");
+        window.removeEventListener('deviceorientation', handleTilt);
+        doubleTap = false;
+      }
+      if (pitch < 0) {
+        alert("volume down");
+        window.removeEventListener('deviceorientation', handleTilt);
+        doubleTap = false;
+      }
+      if (pitch > 90) {
+        alert("volume up");
+        window.removeEventListener('deviceorientation', handleTilt);
+        doubleTap = false;
+      }
     }
   }
 }
