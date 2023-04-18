@@ -20,6 +20,10 @@ io.on('connection', (socket) => {
     console.log("Exited from search");
     socket.broadcast.emit("exit_search");
   });
+  socket.on("exit_video_player", function() {
+    console.log("Exited from video player");
+    socket.broadcast.emit("exit_video_player");
+  });
 
   /* Send search result */
   socket.on("speech_result", function(result) {
