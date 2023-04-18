@@ -1,4 +1,5 @@
 const video = document.querySelector('.myVideo');
+
 const back_button = document.querySelector("#back_button");
 
 back_button.addEventListener("click", function() {
@@ -25,7 +26,8 @@ const constraints = {
   video: true,
 };
 
-function startCamera() {
+function startCamera(){
+  video.style.display = "block";
   navigator.mediaDevices
     .getUserMedia(constraints)
     .then((stream) => {
@@ -53,6 +55,7 @@ function startCamera() {
 }
 
 function stopCamera() {
+  video.style.display = "none";
   const stream = video.srcObject;
   const tracks = stream.getTracks();
 
@@ -69,6 +72,16 @@ var dropdownMenu = document.getElementById("dropdownmenu");
 dropdown.addEventListener("click", function() {
   console.log("entre");
   dropdownMenu.classList.toggle("show");
+});
+
+var dropdownBtn = document.getElementById("videocall");
+var dropdownMenu = document.getElementById("dropdownmenu");
+
+window.addEventListener("click", function(event) {
+  // Verifica si el clic se hizo dentro o fuera del dropdown
+  if (!event.target.matches('#videocall') && dropdownMenu.classList.contains('show')) {
+    dropdownMenu.classList.remove('show');
+  }
 });
 
 //Code for gestures
@@ -138,4 +151,4 @@ function toggleOverlay() {
 }
 
 document.addEventListener("touchstart", handleTouchStart);
-document.addEventListener("touchend", handleTouchEnd);
+document.addEventListener("touchend", handleTouchEnd); 

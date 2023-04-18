@@ -108,25 +108,60 @@ body {
 }
 
 
-
 /* Control buttons part */
+#div_input_text{ 
+    height: 25px;
+    display: flex;
+    align-items: center;
+    padding-top: 60px;
+    padding-left: 60px;
+    padding-right: 60px;
+    font-size:20px;
+}
+
 #control_div{ 
-    height: 100px;
+    height: 55px;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-top: 60px;
 }
 
 #vname{
     height: 40px;
-    width: 80%;
-    margin: 0;
-    padding: 0;
+    width: 100%;
+    margin-left: 55px;
+    margin-right: 55px;
 
     background-color: #598487;
     border: 5px solid #497174;
+    color: #EFF5F5;
+    font-size: 25px;
+}
+
+
+/* Button for entering search results */
+#search_b_div{ 
+    height: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+}
+
+#enter_button{
+    height: 40px;
+    width: 110px;
+    margin-left: 55px;
+    margin-right: 55px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: linear-gradient(
+        #598487,
+        #497174
+    );
     color: #EFF5F5;
     font-size: 25px;
 }
