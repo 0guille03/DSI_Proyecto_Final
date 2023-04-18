@@ -90,14 +90,16 @@ let doubleTap = false;
 let timerId;
 
 document.addEventListener('dblclick', function() {
-  doubleTap = true;
-
-  window.addEventListener('deviceorientation', handleTilt);
-
-  timerId = setTimeout(function() {
-    window.removeEventListener('deviceorientation', handleTilt);
+  if (doubleTap){
     doubleTap = false;
-  }, 5000);
+    window.removeEventListener('deviceorientation', handleTilt);
+    document.getElementById("msg").innerHTML = "";
+  }
+  else{
+    doubleTap = true;
+    window.addEventListener('deviceorientation', handleTilt);
+    document.getElementById("msg").innerHTML = "Detectando gestos...";
+  }
 });
 
 
@@ -108,23 +110,15 @@ function handleTilt(event) {
     if (pitch != 0 && roll != 0) {
       if (roll < -45) {
         alert("go back");
-        window.removeEventListener('deviceorientation', handleTilt);
-        doubleTap = false;
       }
       if (roll > 45) {
         alert("go forward");
-        window.removeEventListener('deviceorientation', handleTilt);
-        doubleTap = false;
       }
       if (pitch < 0) {
         alert("volume down");
-        window.removeEventListener('deviceorientation', handleTilt);
-        doubleTap = false;
       }
       if (pitch > 90) {
         alert("volume up");
-        window.removeEventListener('deviceorientation', handleTilt);
-        doubleTap = false;
       }
     }
   }

@@ -234,3 +234,8 @@ div{
 .show{
   display:block;
 }
+
+#msg{
+  margin-top: 2%;
+  text-align: center;
+}
