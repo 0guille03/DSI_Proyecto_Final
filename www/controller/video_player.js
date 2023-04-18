@@ -102,16 +102,15 @@ let doubleTap = false;
 let timerId;
 
 document.addEventListener('dblclick', function() {
-  if (doubleTap){
+  doubleTap = true;
+  window.addEventListener('deviceorientation', handleTilt);
+  document.getElementById("msg").innerHTML = "Detectando gestos...";
+
+  timerId = setTimeout(function() {
     doubleTap = false;
     window.removeEventListener('deviceorientation', handleTilt);
     document.getElementById("msg").innerHTML = "";
-  }
-  else{
-    doubleTap = true;
-    window.addEventListener('deviceorientation', handleTilt);
-    document.getElementById("msg").innerHTML = "Detectando gestos...";
-  }
+  }, 5000);
 });
 
 
@@ -122,15 +121,27 @@ function handleTilt(event) {
     if (pitch != 0 && roll != 0) {
       if (roll < -45) {
         socket.emit("go_back", {msg: 10});
+        doubleTap = false;
+        window.removeEventListener('deviceorientation', handleTilt);
+        document.getElementById("msg").innerHTML = "";
       }
       if (roll > 45) {
         socket.emit("go_forward", {msg: 10});
+        doubleTap = false;
+        window.removeEventListener('deviceorientation', handleTilt);
+        document.getElementById("msg").innerHTML = "";
       }
       if (pitch < 0) {
         socket.emit("volume_down");
+        doubleTap = false;
+        window.removeEventListener('deviceorientation', handleTilt);
+        document.getElementById("msg").innerHTML = "";
       }
       if (pitch > 90) {
         socket.emit("volume_up");
+        doubleTap = false;
+        window.removeEventListener('deviceorientation', handleTilt);
+        document.getElementById("msg").innerHTML = "";
       }
     }
   }
