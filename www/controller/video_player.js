@@ -1,8 +1,9 @@
 const video = document.querySelector('.myVideo');
-
+const socket = io();
 const back_button = document.querySelector("#back_button");
 
 back_button.addEventListener("click", function() {
+  socket.emit("exit_video_player");
   window.location.href = "selector.html";
 });
 function togglePlay() {
