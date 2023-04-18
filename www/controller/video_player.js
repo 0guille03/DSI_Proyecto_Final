@@ -26,7 +26,7 @@ const constraints = {
   video: true,
 };
 
-function startCamera(){
+function startCamera() {
   video.style.display = "block";
   navigator.mediaDevices
     .getUserMedia(constraints)
@@ -153,4 +153,4 @@ function toggleOverlay() {
 }
 
 document.addEventListener("touchstart", handleTouchStart);
-document.addEventListener("touchend", handleTouchEnd);
+document.addEventListener("touchend", handleTouchEnd); 
