@@ -86,6 +86,40 @@ window.addEventListener("click", function(event) {
 
 //Code for gestures
 
+let doubleTap = false;
+let timerId;
+
+document.addEventListener('dblclick', function() {
+  doubleTap = true;
+  
+  window.addEventListener('deviceorientation', handleTilt);
+
+  timerId = setTimeout(function() {
+    window.removeEventListener('deviceorientation', handleTilt);
+    doubleTap = false;
+  }, 5000);
+});
+
+
+function handleTilt(event) {
+  if (doubleTap) {
+    let roll = event.gamma;
+    let pitch = event.beta;
+    if (roll < -45) {
+      alert("go back");
+    }
+    if (roll > 45) {
+      alert("go forward");
+    }
+    if (pitch < -45) {
+      alert("volume up");
+    }
+    if (pitch > 45){
+      alert("volume down");
+    }
+  }
+}
+
 var last_tap = 0;
 
 var startX, startY, touchStartTimestamp;
@@ -105,38 +139,6 @@ function handleTouchEnd(event) {
     toggleOverlay();
   }
 }
-
-// Tilt left
-window.addEventListener("deviceorientation", function(event) {
-  var roll = event.gamma;
-  if (roll < -45) {
-    alert("go back")
-  }
-});
-
-// Tilt right
-window.addEventListener("deviceorientation", function(event) {
-  var roll = event.gamma;
-  if (roll > 45) {
-    alert("go forward")
-  }
-});
-
-// Tilt forward
-window.addEventListener("deviceorientation", function(event) {
-  var pitch = event.beta;
-  if (pitch < -45) {
-    alert("volume up");
-  }
-});
-
-// Tilt back
-window.addEventListener("deviceorientation", function(event) {
-  var pitch = event.beta;
-  if (pitch > 90) {
-    alert("volume down");
-  }
-});
 
 
 var container = document.getElementById("controls_container");
