@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>replit</title>
   <link href="video_player.css" rel="stylesheet" type="text/css" />
+  <script src="/socket.io/socket.io.js"></script>
 </head>
 
 <body>
@@ -37,15 +38,10 @@
     
     <div id="volume_container">
       <div class="volume-control">
-        <button class="volume-button volume-down">&#8722;</button>
+        <button class="volume-button volume-down" onclick = "volumeDown()">&#8722;</button>
         <div class="volume-icon">🔊</div>
-        <button class="volume-button volume-up">&#43;</button>
+        <button class="volume-button volume-up" onclick = "volumeUp()">&#43;</button>
       </div>
-    </div>
-    
-    <div id="slider_container">
-      <input type="range" min="0" max="100" value="0" class="progress-bar">
-      <div id="msg"></div>
     </div>
   </div>
   <script src="video_player.js"></script>    

@@ -6,10 +6,12 @@ back_button.addEventListener("click", function() {
   socket.emit("exit_video_player");
   window.location.href = "selector.html";
 });
+
 function togglePlay() {
+  socket.emit("play_pause_video");
   var playImg = document.querySelector('.play-pause img.play');
   var pauseImg = document.querySelector('.play-pause img.pause');
-  
+
   if (playImg.style.display !== 'none') {
     playImg.style.display = 'none';
     pauseImg.style.display = 'block';
@@ -19,12 +21,19 @@ function togglePlay() {
   }
 }
 
+function volumeUp() {
+  socket.emit("volume_up");
+}
+function volumeDown() {
+  socket.emit("volume_down");
+}
+
 const constraints = {
   audio: false,
   video: true,
 };
 
-function startCamera(){
+function startCamera() {
   var video_call = document.querySelector('.call');
   var hang = document.querySelector('.hang');
   video_call.style.display = 'none';
@@ -72,14 +81,11 @@ function stopCamera() {
   video.srcObject = null;
 }
 
-
-function Dropdown(){
+function Dropdown() {
   console.log("dropdown function");
   var dropdownMenu = document.getElementById("dropdownmenu");
   dropdownMenu.classList.toggle("show");
-  
-var dropdownBtn = document.getElementById("videocall");
-var dropdownMenu = document.getElementById("dropdownmenu");
+}
 
 window.addEventListener("click", function(event) {
   var dropdownMenu = document.getElementById("dropdownmenu");
@@ -96,16 +102,15 @@ let doubleTap = false;
 let timerId;
 
 document.addEventListener('dblclick', function() {
-  if (doubleTap){
+  doubleTap = true;
+  window.addEventListener('deviceorientation', handleTilt);
+  document.getElementById("msg").innerHTML = "Detectando gestos...";
+
+  timerId = setTimeout(function() {
     doubleTap = false;
     window.removeEventListener('deviceorientation', handleTilt);
     document.getElementById("msg").innerHTML = "";
-  }
-  else{
-    doubleTap = true;
-    window.addEventListener('deviceorientation', handleTilt);
-    document.getElementById("msg").innerHTML = "Detectando gestos...";
-  }
+  }, 5000);
 });
 
 
@@ -115,16 +120,28 @@ function handleTilt(event) {
     let pitch = event.beta;
     if (pitch != 0 && roll != 0) {
       if (roll < -45) {
-        alert("go back");
+        socket.emit("go_back", { msg: 10 });
+        doubleTap = false;
+        window.removeEventListener('deviceorientation', handleTilt);
+        document.getElementById("msg").innerHTML = "";
       }
       if (roll > 45) {
-        alert("go forward");
+        socket.emit("go_forward", { msg: 10 });
+        doubleTap = false;
+        window.removeEventListener('deviceorientation', handleTilt);
+        document.getElementById("msg").innerHTML = "";
       }
       if (pitch < 0) {
-        alert("volume down");
+        socket.emit("volume_down");
+        doubleTap = false;
+        window.removeEventListener('deviceorientation', handleTilt);
+        document.getElementById("msg").innerHTML = "";
       }
       if (pitch > 90) {
-        alert("volume up");
+        socket.emit("volume_up");
+        doubleTap = false;
+        window.removeEventListener('deviceorientation', handleTilt);
+        document.getElementById("msg").innerHTML = "";
       }
     }
   }
