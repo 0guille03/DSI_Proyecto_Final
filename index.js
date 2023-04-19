@@ -58,13 +58,9 @@ io.on('connection', (socket) => {
   });
 
   /* Video controll section */
-  socket.on("play_video", function() {
-    console.log("Play the video");
-    socket.broadcast.emit("play_video");
-  });
-  socket.on("pause_video", function() {
-    console.log("Pause the video");
-    socket.broadcast.emit("pause_video");
+  socket.on("play_pause_video", function() {
+    console.log("Play/Pause the video");
+    socket.broadcast.emit("play_pause_video");
   });
   socket.on("volume_up", function() {
     console.log("Vol up the video");

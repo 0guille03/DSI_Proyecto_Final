@@ -6,6 +6,7 @@ back_button.addEventListener("click", function() {
   socket.emit("exit_video_player");
   window.location.href = "selector.html";
 });
+
 function togglePlay() {
   var playImg = document.querySelector('.play-pause img.play');
   var pauseImg = document.querySelector('.play-pause img.pause');
@@ -13,13 +14,13 @@ function togglePlay() {
   if (playImg.style.display !== 'none') {
     playImg.style.display = 'none';
     pauseImg.style.display = 'block';
-    socket.emit("pause_video");
   } else {
     playImg.style.display = 'block';
     pauseImg.style.display = 'none';
-    socket.emit("play_video");
   }
-}
+  socket.emit("play_pause_video");
+  }
+
 function volumeUp(){
   socket.emit("volume_up");
 }

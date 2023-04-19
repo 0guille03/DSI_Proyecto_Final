@@ -1,5 +1,6 @@
 const socket = io();
 const video = document.getElementById("playingVideo");
+
 function getVideo(){
     socket.emit("get_video_to_play");
     console.log("Asking server for video");
@@ -25,20 +26,35 @@ socket.on("set_video_to_play", function(video){
 
 socket.on("volume_up", function(){
     console.log("volume up");
-video.volume = video.volume + 1;
+    if (video.volume < 1) {
+        video.volume += 0.1;
+      }
 });
 
 socket.on("volume_down", function(){
     console.log("volume down");
-    video.volume = video.volume - 1;
-    });
+    if (video.volume > 0) {
+        video.volume -= 0.1;
+      }
+});
 
-socket.on("play_video", function(){
-    console.log("play");
-    video.play;
-        });
-socket.on("pause_video", function(){
-    console.log("stop");
-     video.pause;
-        });
+socket.on("play_pause_video", function(){
+    console.log("play/pause");
+    if (video.paused) {
+        video.play();
+    } 
+    else{
+        video.pause();
+    }
+});
+
+socket.on("go_back", function(secs) {
+    console.log("Rewind the video: "+secs.msg);
+    video.currentTime -= secs.msg;
+});
+
+socket.on("go_forward", function(secs) {
+    console.log("Foward the video: "+secs.msg);
+    video.currentTime += secs.msg;
+});
 
