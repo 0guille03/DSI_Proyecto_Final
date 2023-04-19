@@ -8,9 +8,10 @@ back_button.addEventListener("click", function() {
 });
 
 function togglePlay() {
+  socket.emit("play_pause_video");
   var playImg = document.querySelector('.play-pause img.play');
   var pauseImg = document.querySelector('.play-pause img.pause');
-  
+
   if (playImg.style.display !== 'none') {
     playImg.style.display = 'none';
     pauseImg.style.display = 'block';
@@ -18,13 +19,12 @@ function togglePlay() {
     playImg.style.display = 'block';
     pauseImg.style.display = 'none';
   }
-  socket.emit("play_pause_video");
-  }
+}
 
-function volumeUp(){
+function volumeUp() {
   socket.emit("volume_up");
 }
-function volumeDown(){
+function volumeDown() {
   socket.emit("volume_down");
 }
 
@@ -33,7 +33,7 @@ const constraints = {
   video: true,
 };
 
-function startCamera(){
+function startCamera() {
   var video_call = document.querySelector('.call');
   var hang = document.querySelector('.hang');
   video_call.style.display = 'none';
@@ -81,7 +81,7 @@ function stopCamera() {
   video.srcObject = null;
 }
 
-function Dropdown(){
+function Dropdown() {
   console.log("dropdown function");
   var dropdownMenu = document.getElementById("dropdownmenu");
   dropdownMenu.classList.toggle("show");
@@ -120,13 +120,13 @@ function handleTilt(event) {
     let pitch = event.beta;
     if (pitch != 0 && roll != 0) {
       if (roll < -45) {
-        socket.emit("go_back", {msg: 10});
+        socket.emit("go_back", { msg: 10 });
         doubleTap = false;
         window.removeEventListener('deviceorientation', handleTilt);
         document.getElementById("msg").innerHTML = "";
       }
       if (roll > 45) {
-        socket.emit("go_forward", {msg: 10});
+        socket.emit("go_forward", { msg: 10 });
         doubleTap = false;
         window.removeEventListener('deviceorientation', handleTilt);
         document.getElementById("msg").innerHTML = "";

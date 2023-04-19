@@ -46,14 +46,14 @@ io.on('connection', (socket) => {
 
   /* Fill playing video variable with current video */
   socket.on("video_to_play", function(video) {
-    console.log("Video selected is: "+ video.msg);
+    console.log("Video selected is: " + video.msg);
     playing_video = video.msg;
     socket.broadcast.emit("start_player");
   });
   socket.on("get_video_to_play", function() {
-    console.log("Video is sent: "+ playing_video);
+    console.log("Video is sent: " + playing_video);
     //socket.broadcast.emit("vid_play");
-    socket.emit("set_video_to_play", {msg: playing_video});
+    socket.emit("set_video_to_play", { msg: playing_video });
     console.log("sent");
   });
 
@@ -71,11 +71,11 @@ io.on('connection', (socket) => {
     socket.broadcast.emit("volume_down");
   });
   socket.on("go_back", function(secs) {
-    console.log("Rewind the video: "+secs.msg);
+    console.log("Rewind the video: " + secs.msg);
     socket.broadcast.emit("go_back", secs);
   });
   socket.on("go_forward", function(secs) {
-    console.log("Foward the video: "+secs.msg);
+    console.log("Foward the video: " + secs.msg);
     socket.broadcast.emit("go_forward", secs);
   });
 });
