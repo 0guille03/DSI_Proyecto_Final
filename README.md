@@ -1,8 +1,3 @@
-Proyecto final, fase de implementación
-Laura Martínez Díaz
-Guillermo Andrés Hernandez Bello
-María García Fraile
-# INSTRUCCIONES DE EJECUCIÓN 
 # Proyecto final, Prototipo
 - Laura Martínez Díaz, 100428953
 - Guillermo Andrés Hernandez Bello, 100428973
