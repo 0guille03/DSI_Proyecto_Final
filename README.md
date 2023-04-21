@@ -6,14 +6,15 @@
 ## Instrucciones de ejecución
 
 1. Entrar a https://replit.com/@lauramardi/DSIProyectoFinal y hacer fork del proyecto
-2. Entrar al archivo www/index.html y cambiar la línea 22 para que el QR redirija al repositorio correcto
-3. Escanear el QR con el móvil
+2. Ejecutar el comando "node index.js"
+3. Entrar al archivo www/index.html y cambiar la línea 22 para que el QR redirija al repositorio correcto
+4. Escanear el QR con el móvil
 
 ## Funcionalidades
 
 1. Selección de vídeos
 2. Navegación entre pantallas
-3. Búsqueda por voz y por teclado
+3. Búsqueda por voz y por teclado, y selección de resultados de búsqueda
 4. Tutorial
 5. Control del video
 6. Videollamada (funcionalidad simulada, ya que solo se interactúa con un móvil, no dos)
