@@ -1,4 +1,5 @@
 const socket = io();
+/* Variables to contain video info  */
 var videos_cod = {1:"all_too_well",
                   2:"22",
                   3:"the_great_war",
@@ -58,25 +59,6 @@ socket.on("set_playing", function() {
   socket.emit("video_to_play", {msg: videos_cod[selected]});
   window.location.href = "video_player.html";
 });
-
-
-//----------------- Esto tiene sentido aqui? ------------------
-socket.on("volume_up", function(){
-  document.getElementById("demo").innerHTML = "Último gesto detectado: subir volumen";
-});
-socket.on("volume_down", function(){
-  document.getElementById("demo").innerHTML = "Último gesto detectado: bajar volumen";
-});
-socket.on("go_back", function(){
-  document.getElementById("demo").innerHTML = "Último gesto detectado: ir hacia atrás";
-});
-socket.on("go_forward", function(){
-  document.getElementById("demo").innerHTML = "Último gesto detectado: ir hacia delante";
-});
-socket.on("toggle_overlay", function(){
-  document.getElementById("demo").innerHTML = "Último gesto detectado: quitar/poner overlay";
-});
-//-----------------------------------------------------------
 
 function changeButton(number){
   if (number == '1'){

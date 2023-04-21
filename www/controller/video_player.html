@@ -9,15 +9,19 @@
 </head>
 
 <body>
+  <!--Video container, z = 1-->
   <div id="video_container">
     <video class="myVideo" autoplay playsinline controls="false"/>
   </div>
-      <!--Go back icon part-->
+      
+  <!--Controls container, z = 2-->
   <div id="controls_container">
+    <!--Go back icon part-->
     <div id="back_div">
       <div id="back_button"><b><</b></div>
     </div>
-    
+
+    <!--Videocall button and contacts-->
     <div id="dropdown">
       <button class="videocall activate-dropdown" onclick='Dropdown()'>
         <img class="call activate-dropdown" src="../img/boton-facetime.png">
@@ -29,13 +33,15 @@
       <a onclick=startCamera() href="#">Contacto 2</a>
       <a onclick=startCamera() href="#">Contacto 3</a>
     </div>
+
+    <!--Button play/pause-->
 <div id="play_pause_container">
   <button class="play-pause" onclick="togglePlay()">
     <img class="play" src="../img/punta-de-flecha-del-boton-de-reproduccion.png">
     <img class="pause" src="../img/pausa.png">
   </button>
 </div>
-    
+    <!--Button volume-->
     <div id="volume_container">
       <div class="volume-control">
         <button class="volume-button volume-down" onclick = "volumeDown()">&#8722;</button>

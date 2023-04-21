@@ -1,16 +1,21 @@
 const socket = io();
+/* Variables to apply search  */
 var videos_cod = {1:"all_too_well",
                   2:"22",
                   3:"the_great_war",
                   4:"lavender_haze",
                   5:"me",
-                  6:"out_of_the_woods"}
+                  6:"out_of_the_woods"
+                }
 var videos_name = {1:"All Too Well",
                   2:"22",
                   3:"The Great War",
                   4:"Lavender Haze",
                   5:"ME!",
-                  6:"Out Of The Woods"}
+                  6:"Out Of The Woods"
+                }
+
+// Coding to match the current layout to the real number in the videos_... arrays
 var coding = {1:1,
               2:2,
               3:3,
@@ -18,14 +23,16 @@ var coding = {1:1,
               5:5,
               6:6}
 var video_layout = [1,2,3,4,5,6];
-var current_layout = [1,2,3,4,5,6];
+var current_layout = [1,2,3,4,5,6]; // Layout that changes depending on search
 var selected = 1;
 var searched_word="";
 
+/* Exit the search module */
 socket.on("exit_search", function() {
   window.location.href = "selector.html";
 });
 
+/* Update header when search term is entered */
 socket.on("speech_result", function(result) {
   searched_word=result;
   if (result === "") result="...";
@@ -39,6 +46,7 @@ socket.on("set_playing", function() {
   window.location.href = "video_player.html";
 });
 
+/* When there has been a change in selected or a term has been inputed */
 function updateHtml(){
   current_layout=[]
   let new_html = ""; 

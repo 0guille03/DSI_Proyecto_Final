@@ -2,11 +2,13 @@ const video = document.querySelector('.myVideo');
 const socket = io();
 const back_button = document.querySelector("#back_button");
 
+//function to go back to main page
 back_button.addEventListener("click", function() {
   socket.emit("exit_video_player");
   window.location.href = "selector.html";
 });
 
+//function to play and pause the video
 function togglePlay() {
   socket.emit("play_pause_video");
   var playImg = document.querySelector('.play-pause img.play');
@@ -21,6 +23,7 @@ function togglePlay() {
   }
 }
 
+//function to volume down and up
 function volumeUp() {
   socket.emit("volume_up");
 }
@@ -28,6 +31,8 @@ function volumeDown() {
   socket.emit("volume_down");
 }
 
+
+//function to start camera from the device
 const constraints = {
   audio: false,
   video: true,
@@ -65,6 +70,7 @@ function startCamera() {
     });
 }
 
+//function to hang up the call and stop the camera
 function stopCamera() {
   var video_call = document.querySelector('.call');
   var hang = document.querySelector('.hang');
@@ -81,12 +87,14 @@ function stopCamera() {
   video.srcObject = null;
 }
 
+//function to display contacts
 function Dropdown() {
   console.log("dropdown function");
   var dropdownMenu = document.getElementById("dropdownmenu");
   dropdownMenu.classList.toggle("show");
 }
 
+//function to quit contacts
 window.addEventListener("click", function(event) {
   var dropdownMenu = document.getElementById("dropdownmenu");
   // Verifica si el clic se hizo dentro o fuera del dropdown
@@ -101,6 +109,7 @@ window.addEventListener("click", function(event) {
 let doubleTap = false;
 let timerId;
 
+// Listener for starting to detect motions when the screen is pressed twice, which is removed after 5 seconds
 document.addEventListener('dblclick', function() {
   doubleTap = true;
   window.addEventListener('deviceorientation', handleTilt);
@@ -113,12 +122,13 @@ document.addEventListener('dblclick', function() {
   }, 5000);
 });
 
-
+// Function that detects the angle of the motion to determine what the user wants. Once a motion is detected, the listener is removed.
 function handleTilt(event) {
   if (doubleTap) {
     let roll = event.gamma;
     let pitch = event.beta;
     if (pitch != 0 && roll != 0) {
+      // If the device is tilted to the left, go back 10 seconds
       if (roll < -45) {
         socket.emit("go_back", { msg: 10 });
         doubleTap = false;
@@ -126,18 +136,21 @@ function handleTilt(event) {
         document.getElementById("msg").innerHTML = "";
       }
       if (roll > 45) {
+        // If the device is tilted to the right, go forward 10 seconds
         socket.emit("go_forward", { msg: 10 });
         doubleTap = false;
         window.removeEventListener('deviceorientation', handleTilt);
         document.getElementById("msg").innerHTML = "";
       }
       if (pitch < 0) {
+        // If the device is tilted backward, lower the volume
         socket.emit("volume_down");
         doubleTap = false;
         window.removeEventListener('deviceorientation', handleTilt);
         document.getElementById("msg").innerHTML = "";
       }
       if (pitch > 90) {
+        // If the device is tilted forward, increase the volume
         socket.emit("volume_up");
         doubleTap = false;
         window.removeEventListener('deviceorientation', handleTilt);
@@ -147,10 +160,10 @@ function handleTilt(event) {
   }
 }
 
-var last_tap = 0;
-
 var startX, startY, touchStartTimestamp;
 
+// Functions for detecting a circular motion on the screen to toggle the overlay. We tried to implement detecting a real circle
+// using angles, but couldn't get it to work, so we faked it by detecting when a gesture starts and ends at the same point
 function handleTouchStart(event) {
   console.log("handler2");
   startX = event.touches[0].clientX;
@@ -170,6 +183,7 @@ function handleTouchEnd(event) {
 
 var container = document.getElementById("controls_container");
 
+// Function that activates or deactivates the overlay
 function toggleOverlay() {
 
   if (container.style.display === "none") {

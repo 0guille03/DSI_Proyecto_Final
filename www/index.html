@@ -17,11 +17,14 @@
         window.location.href = "player/"+path.msg;
         
       });
+
+/*******************CAMBIAR EL REPOSITORIO AL HACER FORK PARA QUE FUNCIONE*****************************/
+      var repository = "DSIProyectoFinal.lauramardi.repl.co";
+
+
       const qrcode = new QRCode("qrcode", {
 
-        /*text: "https://dsiproyectofinal.mariagarcia46.repl.co/controller/video_player.html",*/
-        /*text: "https://DSIProyectoFinal.guillehernandez.repl.co/controller/selector.html",*/
-        text: "https://DSIProyectoFinal.lauramardi.repl.co/controller/selector.html",
+        text: "https://" + repository + "/controller/selector.html",
 
         width: 300,
         height: 300,

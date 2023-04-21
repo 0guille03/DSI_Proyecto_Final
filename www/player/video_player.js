@@ -1,29 +1,27 @@
 const socket = io();
 const video = document.querySelector("#playingVideo");
 
+/* Go back to the selection screen */
+socket.on("change_html", function(path) {
+  window.location.href = path.msg;
+});
+
+/* On page load asks server for current playing video */
 function getVideo() {
   socket.emit("get_video_to_play");
   console.log("Asking server for video");
 }
 
-socket.on("change_html", function(path) {
-  window.location.href = path.msg;
-});
-
-socket.on("exit_video_player", function() {
-  window.location.href = "selector.html";
-});
-
+/* Receives video name from the server */
 socket.on("set_video_to_play", function(video) {
   console.log("reached");
   console.log(video.msg);
   let video_html = document.querySelector("#playingVideo");
-  console.log(video_html);
   video_html.src = "../video/" + video.msg + ".mp4";
-  console.log(video_html)
   video_html.play();
 });
 
+// Actions for gestures that are executed when the message from the server is received
 socket.on("volume_up", function() {
   console.log("volume up");
   if (video.volume <= 0.9) {
@@ -31,13 +29,13 @@ socket.on("volume_up", function() {
   }
 });
 
+/* Change video status depending on comand received */
 socket.on("volume_down", function() {
   console.log("volume down");
   if (video.volume >= 0.1) {
     video.volume -= 0.1;
   }
 });
-
 socket.on("play_pause_video", function() {
   console.log("play/pause");
   if (video.paused) {
@@ -47,12 +45,10 @@ socket.on("play_pause_video", function() {
     video.pause();
   }
 });
-
 socket.on("go_back", function(secs) {
   console.log("Rewind the video: " + secs.msg);
   video.currentTime -= secs.msg;
 });
-
 socket.on("go_forward", function(secs) {
   console.log("Forward the video: " + secs.msg);
   video.currentTime += secs.msg;

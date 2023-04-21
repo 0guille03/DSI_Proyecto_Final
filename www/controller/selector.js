@@ -30,7 +30,7 @@ ok_b.addEventListener("click", function() {
   window.location.href = "video_player.html";
 });
 
-
+// Function that is executed when the controlled is loaded so that the player loads the main page
 function loadPlayer() {
   socket.emit("change_html", { msg: "selector.html" });
 }

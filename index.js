@@ -22,7 +22,7 @@ io.on('connection', (socket) => {
   });
   socket.on("exit_video_player", function() {
     console.log("Exited from video player");
-    socket.broadcast.emit("exit_video_player");
+    socket.broadcast.emit("change_html", {msg: "selector.html"});
   });
 
   /* Send search result */
