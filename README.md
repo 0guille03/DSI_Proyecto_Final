@@ -6,8 +6,8 @@
 ## Instrucciones de ejecución
 
 1. Entrar a https://replit.com/@lauramardi/DSIProyectoFinal y hacer fork del proyecto
-2. Ejecutar el comando "node index.js"
-3. Entrar al archivo www/index.html y cambiar la línea 22 para que el QR redirija al repositorio correcto
+2. Entrar al archivo www/index.html y cambiar la línea 22 para que el QR redirija al repositorio correcto
+3. Ejecutar el comando "node index.js"
 4. Escanear el QR con el móvil
 
 ## Funcionalidades
